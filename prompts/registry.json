@@ -1,20 +1,51 @@
 {
   "_meta": {
-    "description": "Prompt & Schema Registry — source unique de vérité pour le pipeline Document Intelligence",
+    "description": "Prompt & Schema Registry — CAC 40 chart extraction pipeline (Qwen2.5-VL). Primary use case: OHLC extraction from daily candlestick screenshots.",
     "versioning": "semver MAJOR.MINOR.PATCH — MAJOR=rupture schéma, MINOR=ajout champ, PATCH=reformulation",
-    "last_updated": "2026-03-12"
+    "last_updated": "2026-03-21",
+    "primary_prompt": "extract.chart"
   },
   "prompts": {
     "classify": {
-      "active": "1.0.0",
+      "active": "1.1.0",
       "versions": {
         "1.0.0": {
           "created_at": "2026-03-12",
-          "description": "Classification initiale — 5 champs (doc_type, category, confidence, language, notes)",
+          "description": "Classification initiale — chart absent de l'enum",
+          "deprecated": true,
           "schema_ref": "classify@1.0.0",
           "system": "You are a document classification expert.\nAnalyze the document image provided and classify it precisely.\nAlways respond with valid JSON only — no prose, no markdown fences.",
-          "user": "Classify this document.\n\nReturn a JSON object with exactly these fields:\n{\n  \"document_type\": \"<invoice|contract|bank_statement|report|form|receipt|id_document|letter|other>\",\n  \"category\": \"<financial|legal|administrative|technical|personal|other>\",\n  \"confidence\": <float 0.0–1.0>,\n  \"language\": \"<fr|en|de|es|other>\",\n  \"notes\": \"<optional short observation>\"\n}",
+          "user": "Classify this document.\n\nReturn a JSON object with exactly these fields:\n{\n  \"document_type\": \"<invoice|contract|bank_statement|report|form|receipt|id_document|letter|other>\",\n  \"category\": \"<financial|legal|administrative|technical|personal|other>\",\n  \"confidence\": <float 0.0\u20131.0>,\n  \"language\": \"<fr|en|de|es|other>\",\n  \"notes\": \"<optional short observation>\"\n}",
           "hash": "sha256:de47d7ad3fa68618"
+        },
+        "1.1.0": {
+          "created_at": "2026-03-21",
+          "description": "Classification — chart ajouté en premier dans l'enum (use case principal)",
+          "schema_ref": "classify@1.1.0",
+          "system": "You are a document classification expert specialized in financial chart images.\nAnalyze the document image provided and classify it precisely.\nAlways respond with valid JSON only — no prose, no markdown fences.",
+          "user": "Classify this document.\n\nReturn a JSON object with exactly these fields:\n{\n  \"document_type\": \"<chart|invoice|contract|bank_statement|report|form|receipt|id_document|letter|other>\",\n  \"category\": \"<financial|legal|administrative|technical|personal|other>\",\n  \"confidence\": <float 0.0\u20131.0>,\n  \"language\": \"<fr|en|de|es|other>\",\n  \"notes\": \"<optional short observation>\"\n}",
+          "hash": "sha256:b3c91e7d4f2a5608"
+        }
+      }
+    },
+    "extract.chart": {
+      "active": "1.1.0",
+      "versions": {
+        "1.0.0": {
+          "created_at": "2026-03-13",
+          "description": "Extraction graphique financier — OHLCV, symbole, timeframe, date",
+          "schema_ref": "extract.chart@1.0.0",
+          "system": "You are an expert financial chart reader.\nAnalyze the chart image carefully: read the title/symbol, the timeframe selector, the date axis, and the price scale.\nAlways respond with valid JSON only — no prose, no markdown fences.",
+          "user": "Read this financial chart image and extract the visible price data.\n\nReturn JSON:\n{\n  \"document_type\": \"chart\",\n  \"confidence\": <float 0.0-1.0>,\n  \"fields\": {\n    \"symbol\": \"<ticker visible on chart, e.g. TVC:CAC40>\",\n    \"chart_date\": \"<YYYY-MM-DD of the active candle/cursor>\",\n    \"timeframe\": \"<1m|5m|15m|30m|1H|4H|1D|1W|1M>\",\n    \"open\": \"<opening price as string>\",\n    \"high\": \"<high price as string>\",\n    \"low\": \"<low price as string>\",\n    \"close\": \"<closing/last price as string>\",\n    \"volume\": \"<volume if visible, else null>\",\n    \"chart_type\": \"<candlestick|bar|line>\",\n    \"trend\": \"<bullish|bearish|sideways>\"\n  }\n}",
+          "hash": "sha256:c7f3a2b91d48e056"
+        },
+        "1.1.0": {
+          "created_at": "2026-03-21",
+          "description": "Extraction graphique CAC 40 — ajout instructions axes Y/X et null explicite pour champs non visibles",
+          "schema_ref": "extract.chart@1.1.0",
+          "system": "You are an expert financial chart reader specialized in CAC 40 daily candlestick charts.\nAnalyze the chart image carefully:\n- The Y-axis (right side) is the price scale in points.\n- The X-axis (bottom) shows dates — read the date under the active cursor.\n- The candle body top = open or close (whichever is higher). Wick top = high. Wick bottom = low.\n- If a field is not visible in the image, use null — do not guess.\nAlways respond with valid JSON only — no prose, no markdown fences.",
+          "user": "Read this CAC 40 daily chart image and extract the price data for the active candle.\n\nReturn JSON:\n{\n  \"document_type\": \"chart\",\n  \"confidence\": <float 0.0-1.0>,\n  \"fields\": {\n    \"symbol\": \"<ticker shown on chart, e.g. TVC:CAC40>\",\n    \"chart_date\": \"<YYYY-MM-DD date of the active candle from the X-axis>\",\n    \"timeframe\": \"<timeframe shown on chart, e.g. 1D>\",\n    \"open\": \"<open price as string, null if not visible>\",\n    \"high\": \"<high price as string, null if not visible>\",\n    \"low\": \"<low price as string, null if not visible>\",\n    \"close\": \"<close/last price as string, null if not visible>\",\n    \"volume\": \"<volume if visible, else null>\",\n    \"chart_type\": \"<candlestick|bar|line>\",\n    \"trend\": \"<bullish|bearish|sideways based on candle color and position>\"\n  }\n}",
+          "hash": "sha256:f8d2c4a73e916b45"
         }
       }
     },
@@ -23,7 +54,7 @@
       "versions": {
         "1.0.0": {
           "created_at": "2026-03-12",
-          "description": "Extraction facture — 10 champs + line_items",
+          "description": "Extraction facture — 10 champs + line_items (use case secondaire)",
           "schema_ref": "extract.invoice@1.0.0",
           "system": "You are an expert data extraction engine.\nExtract all structured information from the document image.\nAlways respond with valid JSON only — no prose, no markdown fences.",
           "user": "Extract all data from this invoice.\n\nReturn JSON:\n{\n  \"document_type\": \"invoice\",\n  \"confidence\": <float>,\n  \"fields\": {\n    \"invoice_number\": \"\",\n    \"date\": \"\",\n    \"due_date\": \"\",\n    \"vendor\": \"\",\n    \"vendor_address\": \"\",\n    \"client\": \"\",\n    \"client_address\": \"\",\n    \"total_amount\": \"\",\n    \"vat_amount\": \"\",\n    \"currency\": \"\"\n  },\n  \"line_items\": [\n    {\"description\": \"\", \"qty\": \"\", \"unit_price\": \"\", \"total\": \"\"}\n  ],\n  \"raw_text_snippet\": \"<first 200 chars of visible text>\"\n}",
@@ -36,7 +67,7 @@
       "versions": {
         "1.0.0": {
           "created_at": "2026-03-12",
-          "description": "Extraction relevé bancaire — soldes, IBAN, transactions",
+          "description": "Extraction relevé bancaire — soldes, IBAN, transactions (use case secondaire)",
           "schema_ref": "extract.bank_statement@1.0.0",
           "system": "You are an expert data extraction engine.\nExtract all structured information from the document image.\nAlways respond with valid JSON only — no prose, no markdown fences.",
           "user": "Extract all data from this bank statement.\n\nReturn JSON:\n{\n  \"document_type\": \"bank_statement\",\n  \"confidence\": <float>,\n  \"fields\": {\n    \"account_holder\": \"\",\n    \"account_number\": \"\",\n    \"iban\": \"\",\n    \"bank_name\": \"\",\n    \"period_start\": \"\",\n    \"period_end\": \"\",\n    \"opening_balance\": \"\",\n    \"closing_balance\": \"\",\n    \"currency\": \"\"\n  },\n  \"line_items\": [\n    {\"description\": \"<label>\", \"qty\": \"<date>\", \"unit_price\": \"<debit>\", \"total\": \"<credit>\"}\n  ],\n  \"raw_text_snippet\": \"<first 200 chars>\"\n}",
@@ -49,24 +80,11 @@
       "versions": {
         "1.0.0": {
           "created_at": "2026-03-12",
-          "description": "Extraction contrat — parties, dates, valeur",
+          "description": "Extraction contrat — parties, dates, valeur (use case secondaire)",
           "schema_ref": "extract.contract@1.0.0",
           "system": "You are an expert data extraction engine.\nExtract all structured information from the document image.\nAlways respond with valid JSON only — no prose, no markdown fences.",
           "user": "Extract key information from this contract.\n\nReturn JSON:\n{\n  \"document_type\": \"contract\",\n  \"confidence\": <float>,\n  \"fields\": {\n    \"contract_title\": \"\",\n    \"contract_date\": \"\",\n    \"effective_date\": \"\",\n    \"expiry_date\": \"\",\n    \"parties\": [],\n    \"governing_law\": \"\",\n    \"contract_value\": \"\"\n  },\n  \"line_items\": [],\n  \"raw_text_snippet\": \"<first 200 chars>\"\n}",
           "hash": "sha256:44aded581d128a75"
-        }
-      }
-    },
-    "extract.chart": {
-      "active": "1.0.0",
-      "versions": {
-        "1.0.0": {
-          "created_at": "2026-03-13",
-          "description": "Extraction graphique financier — OHLCV, symbole, timeframe, date",
-          "schema_ref": "extract.chart@1.0.0",
-          "system": "You are an expert financial chart reader.\nAnalyze the chart image carefully: read the title/symbol, the timeframe selector, the date axis, and the price scale.\nAlways respond with valid JSON only — no prose, no markdown fences.",
-          "user": "Read this financial chart image and extract the visible price data.\n\nReturn JSON:\n{\n  \"document_type\": \"chart\",\n  \"confidence\": <float 0.0-1.0>,\n  \"fields\": {\n    \"symbol\": \"<ticker visible on chart, e.g. TVC:CAC40>\",\n    \"chart_date\": \"<YYYY-MM-DD of the active candle/cursor>\",\n    \"timeframe\": \"<1m|5m|15m|30m|1H|4H|1D|1W|1M>\",\n    \"open\": \"<opening price as string>\",\n    \"high\": \"<high price as string>\",\n    \"low\": \"<low price as string>\",\n    \"close\": \"<closing/last price as string>\",\n    \"volume\": \"<volume if visible, else null>\",\n    \"chart_type\": \"<candlestick|bar|line>\",\n    \"trend\": \"<bullish|bearish|sideways>\"\n  }\n}",
-          "hash": "sha256:c7f3a2b91d48e056"
         }
       }
     },
@@ -75,7 +93,7 @@
       "versions": {
         "1.0.0": {
           "created_at": "2026-03-12",
-          "description": "Extraction générique — champs libres",
+          "description": "Extraction générique — champs libres, fallback quand le type est inconnu",
           "schema_ref": "extract.default@1.0.0",
           "system": "You are an expert data extraction engine.\nExtract all structured information from the document image.\nAlways respond with valid JSON only — no prose, no markdown fences.",
           "user": "Extract all structured information from this document.\n\nReturn JSON:\n{\n  \"document_type\": \"<detected type>\",\n  \"confidence\": <float>,\n  \"fields\": {\n    \"<field_name>\": \"<value>\"\n  },\n  \"line_items\": [\n    {\"description\": \"\", \"qty\": \"\", \"unit_price\": \"\", \"total\": \"\"}\n  ],\n  \"tables\": [],\n  \"raw_text_snippet\": \"<first 200 chars of text>\"\n}",
@@ -86,11 +104,17 @@
   },
   "schemas": {
     "classify": {
-      "active": "1.0.0",
+      "active": "1.1.0",
       "versions": {
         "1.0.0": {
           "created_at": "2026-03-12",
-          "description": "Schéma de classification — 5 champs de sortie",
+          "deprecated": true,
+          "description": "Schéma classification v1.0 — chart absent",
+          "doc_types": ["invoice","contract","bank_statement","report","form","receipt","id_document","letter","other"]
+        },
+        "1.1.0": {
+          "created_at": "2026-03-21",
+          "description": "Schéma classification — chart en premier (use case principal)",
           "doc_types": [
             "chart",
             "invoice",
@@ -112,338 +136,26 @@
             "other"
           ],
           "output_schema": {
-            "document_type": {
-              "type": "string",
-              "enum": [
-                "chart",
-                "invoice",
-                "contract",
-                "bank_statement",
-                "report",
-                "form",
-                "receipt",
-                "id_document",
-                "letter",
-                "other"
-              ],
-              "required": true
-            },
-            "category": {
-              "type": "string",
-              "enum": [
-                "financial",
-                "legal",
-                "administrative",
-                "technical",
-                "personal",
-                "other"
-              ],
-              "required": true
-            },
-            "confidence": {
-              "type": "float",
-              "min": 0.0,
-              "max": 1.0,
-              "required": true
-            },
-            "language": {
-              "type": "string",
-              "enum": [
-                "fr",
-                "en",
-                "de",
-                "es",
-                "other"
-              ],
-              "required": true
-            },
-            "notes": {
-              "type": "string",
-              "required": false
-            }
+            "document_type": { "type": "string", "enum": ["chart","invoice","contract","bank_statement","report","form","receipt","id_document","letter","other"], "required": true },
+            "category":      { "type": "string", "enum": ["financial","legal","administrative","technical","personal","other"], "required": true },
+            "confidence":    { "type": "float",  "min": 0.0, "max": 1.0, "required": true },
+            "language":      { "type": "string", "enum": ["fr","en","de","es","other"], "required": true },
+            "notes":         { "type": "string", "required": false }
           }
         }
       }
     },
-    "extract.invoice": {
-      "active": "1.0.0",
-      "versions": {
-        "1.0.0": {
-          "created_at": "2026-03-12",
-          "description": "Schéma facture — 10 champs principaux + lignes",
-          "output_schema": {
-            "document_type": {
-              "type": "string",
-              "value": "invoice",
-              "required": true
-            },
-            "confidence": {
-              "type": "float",
-              "min": 0.0,
-              "max": 1.0,
-              "required": true
-            },
-            "fields": {
-              "invoice_number": {
-                "type": "string",
-                "required": true
-              },
-              "date": {
-                "type": "string",
-                "format": "YYYY-MM-DD",
-                "required": true
-              },
-              "due_date": {
-                "type": "string",
-                "format": "YYYY-MM-DD",
-                "required": false
-              },
-              "vendor": {
-                "type": "string",
-                "required": true
-              },
-              "vendor_address": {
-                "type": "string",
-                "required": false
-              },
-              "client": {
-                "type": "string",
-                "required": true
-              },
-              "client_address": {
-                "type": "string",
-                "required": false
-              },
-              "total_amount": {
-                "type": "string",
-                "required": true
-              },
-              "vat_amount": {
-                "type": "string",
-                "required": false
-              },
-              "currency": {
-                "type": "string",
-                "required": true
-              }
-            },
-            "line_items": {
-              "type": "array",
-              "items": {
-                "description": {
-                  "type": "string",
-                  "required": true
-                },
-                "qty": {
-                  "type": "string",
-                  "required": false
-                },
-                "unit_price": {
-                  "type": "string",
-                  "required": false
-                },
-                "total": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            },
-            "raw_text_snippet": {
-              "type": "string",
-              "max_length": 200,
-              "required": false
-            }
-          },
-          "required_fields": [
-            "invoice_number",
-            "date",
-            "vendor",
-            "client",
-            "total_amount",
-            "currency"
-          ],
-          "eval_fields": [
-            "invoice_number",
-            "date",
-            "vendor",
-            "total_amount",
-            "currency"
-          ]
-        }
-      }
-    },
-    "extract.bank_statement": {
-      "active": "1.0.0",
-      "versions": {
-        "1.0.0": {
-          "created_at": "2026-03-12",
-          "description": "Schéma relevé bancaire — soldes et transactions",
-          "output_schema": {
-            "document_type": {
-              "type": "string",
-              "value": "bank_statement",
-              "required": true
-            },
-            "confidence": {
-              "type": "float",
-              "min": 0.0,
-              "max": 1.0,
-              "required": true
-            },
-            "fields": {
-              "account_holder": {
-                "type": "string",
-                "required": true
-              },
-              "account_number": {
-                "type": "string",
-                "required": false
-              },
-              "iban": {
-                "type": "string",
-                "required": true
-              },
-              "bank_name": {
-                "type": "string",
-                "required": true
-              },
-              "period_start": {
-                "type": "string",
-                "format": "YYYY-MM-DD",
-                "required": true
-              },
-              "period_end": {
-                "type": "string",
-                "format": "YYYY-MM-DD",
-                "required": true
-              },
-              "opening_balance": {
-                "type": "string",
-                "required": true
-              },
-              "closing_balance": {
-                "type": "string",
-                "required": true
-              },
-              "currency": {
-                "type": "string",
-                "required": true
-              }
-            },
-            "line_items": {
-              "type": "array",
-              "items": {
-                "description": {
-                  "type": "string"
-                },
-                "qty": {
-                  "type": "string",
-                  "description": "date de transaction"
-                },
-                "unit_price": {
-                  "type": "string",
-                  "description": "débit"
-                },
-                "total": {
-                  "type": "string",
-                  "description": "crédit"
-                }
-              }
-            }
-          },
-          "required_fields": [
-            "account_holder",
-            "iban",
-            "bank_name",
-            "period_start",
-            "period_end",
-            "opening_balance",
-            "closing_balance"
-          ],
-          "eval_fields": [
-            "iban",
-            "bank_name",
-            "opening_balance",
-            "closing_balance",
-            "currency"
-          ]
-        }
-      }
-    },
-    "extract.contract": {
-      "active": "1.0.0",
-      "versions": {
-        "1.0.0": {
-          "created_at": "2026-03-12",
-          "description": "Schéma contrat — parties et conditions clés",
-          "output_schema": {
-            "document_type": {
-              "type": "string",
-              "value": "contract",
-              "required": true
-            },
-            "confidence": {
-              "type": "float",
-              "min": 0.0,
-              "max": 1.0,
-              "required": true
-            },
-            "fields": {
-              "contract_title": {
-                "type": "string",
-                "required": false
-              },
-              "contract_date": {
-                "type": "string",
-                "format": "YYYY-MM-DD",
-                "required": true
-              },
-              "effective_date": {
-                "type": "string",
-                "format": "YYYY-MM-DD",
-                "required": false
-              },
-              "expiry_date": {
-                "type": "string",
-                "format": "YYYY-MM-DD",
-                "required": false
-              },
-              "parties": {
-                "type": "array",
-                "required": true
-              },
-              "governing_law": {
-                "type": "string",
-                "required": false
-              },
-              "contract_value": {
-                "type": "string",
-                "required": false
-              }
-            },
-            "line_items": {
-              "type": "array",
-              "items": {}
-            }
-          },
-          "required_fields": [
-            "contract_date",
-            "parties"
-          ],
-          "eval_fields": [
-            "contract_date",
-            "parties",
-            "contract_value"
-          ]
-        }
-      }
-    },
     "extract.chart": {
-      "active": "1.0.0",
+      "active": "1.1.0",
       "versions": {
         "1.0.0": {
           "created_at": "2026-03-13",
-          "description": "Schéma graphique financier — OHLCV + métadonnées chart",
+          "deprecated": true,
+          "description": "Schéma graphique v1.0 — sans instructions axes"
+        },
+        "1.1.0": {
+          "created_at": "2026-03-21",
+          "description": "Schéma graphique CAC 40 — OHLCV + métadonnées chart, null explicite",
           "output_schema": {
             "document_type": { "type": "string", "value": "chart", "required": true },
             "confidence":    { "type": "float", "min": 0.0, "max": 1.0, "required": true },
@@ -451,11 +163,11 @@
               "symbol":     { "type": "string", "required": true,  "example": "TVC:CAC40" },
               "chart_date": { "type": "string", "format": "YYYY-MM-DD", "required": true },
               "timeframe":  { "type": "string", "enum": ["1m","5m","15m","30m","1H","4H","1D","1W","1M"], "required": true },
-              "open":       { "type": "string", "required": true  },
-              "high":       { "type": "string", "required": true  },
-              "low":        { "type": "string", "required": true  },
-              "close":      { "type": "string", "required": true  },
-              "volume":     { "type": "string", "required": false },
+              "open":       { "type": "string", "required": true,  "nullable": true },
+              "high":       { "type": "string", "required": true,  "nullable": true },
+              "low":        { "type": "string", "required": true,  "nullable": true },
+              "close":      { "type": "string", "required": true,  "nullable": true },
+              "volume":     { "type": "string", "required": false, "nullable": true },
               "chart_type": { "type": "string", "enum": ["candlestick","bar","line"], "required": false },
               "trend":      { "type": "string", "enum": ["bullish","bearish","sideways"], "required": false }
             }
@@ -465,37 +177,116 @@
         }
       }
     },
+    "extract.invoice": {
+      "active": "1.0.0",
+      "versions": {
+        "1.0.0": {
+          "created_at": "2026-03-12",
+          "description": "Schéma facture — 10 champs principaux + lignes (use case secondaire)",
+          "output_schema": {
+            "document_type": { "type": "string", "value": "invoice", "required": true },
+            "confidence":    { "type": "float", "min": 0.0, "max": 1.0, "required": true },
+            "fields": {
+              "invoice_number": { "type": "string", "required": true },
+              "date":           { "type": "string", "format": "YYYY-MM-DD", "required": true },
+              "due_date":       { "type": "string", "format": "YYYY-MM-DD", "required": false },
+              "vendor":         { "type": "string", "required": true },
+              "vendor_address": { "type": "string", "required": false },
+              "client":         { "type": "string", "required": true },
+              "client_address": { "type": "string", "required": false },
+              "total_amount":   { "type": "string", "required": true },
+              "vat_amount":     { "type": "string", "required": false },
+              "currency":       { "type": "string", "required": true }
+            },
+            "line_items": {
+              "type": "array",
+              "items": {
+                "description": { "type": "string", "required": true },
+                "qty":         { "type": "string", "required": false },
+                "unit_price":  { "type": "string", "required": false },
+                "total":       { "type": "string", "required": false }
+              }
+            },
+            "raw_text_snippet": { "type": "string", "max_length": 200, "required": false }
+          },
+          "required_fields": ["invoice_number","date","vendor","client","total_amount","currency"],
+          "eval_fields":     ["invoice_number","date","vendor","total_amount","currency"]
+        }
+      }
+    },
+    "extract.bank_statement": {
+      "active": "1.0.0",
+      "versions": {
+        "1.0.0": {
+          "created_at": "2026-03-12",
+          "description": "Schéma relevé bancaire — soldes et transactions (use case secondaire)",
+          "output_schema": {
+            "document_type": { "type": "string", "value": "bank_statement", "required": true },
+            "confidence":    { "type": "float", "min": 0.0, "max": 1.0, "required": true },
+            "fields": {
+              "account_holder":  { "type": "string", "required": true },
+              "account_number":  { "type": "string", "required": false },
+              "iban":            { "type": "string", "required": true },
+              "bank_name":       { "type": "string", "required": true },
+              "period_start":    { "type": "string", "format": "YYYY-MM-DD", "required": true },
+              "period_end":      { "type": "string", "format": "YYYY-MM-DD", "required": true },
+              "opening_balance": { "type": "string", "required": true },
+              "closing_balance": { "type": "string", "required": true },
+              "currency":        { "type": "string", "required": true }
+            },
+            "line_items": {
+              "type": "array",
+              "items": {
+                "description": { "type": "string" },
+                "qty":         { "type": "string", "description": "date de transaction" },
+                "unit_price":  { "type": "string", "description": "débit" },
+                "total":       { "type": "string", "description": "crédit" }
+              }
+            }
+          },
+          "required_fields": ["account_holder","iban","bank_name","period_start","period_end","opening_balance","closing_balance"],
+          "eval_fields":     ["iban","bank_name","opening_balance","closing_balance","currency"]
+        }
+      }
+    },
+    "extract.contract": {
+      "active": "1.0.0",
+      "versions": {
+        "1.0.0": {
+          "created_at": "2026-03-12",
+          "description": "Schéma contrat — parties et conditions clés (use case secondaire)",
+          "output_schema": {
+            "document_type": { "type": "string", "value": "contract", "required": true },
+            "confidence":    { "type": "float", "min": 0.0, "max": 1.0, "required": true },
+            "fields": {
+              "contract_title":  { "type": "string", "required": false },
+              "contract_date":   { "type": "string", "format": "YYYY-MM-DD", "required": true },
+              "effective_date":  { "type": "string", "format": "YYYY-MM-DD", "required": false },
+              "expiry_date":     { "type": "string", "format": "YYYY-MM-DD", "required": false },
+              "parties":         { "type": "array", "required": true },
+              "governing_law":   { "type": "string", "required": false },
+              "contract_value":  { "type": "string", "required": false }
+            },
+            "line_items": { "type": "array", "items": {} }
+          },
+          "required_fields": ["contract_date","parties"],
+          "eval_fields":     ["contract_date","parties","contract_value"]
+        }
+      }
+    },
     "extract.default": {
       "active": "1.0.0",
       "versions": {
         "1.0.0": {
           "created_at": "2026-03-12",
-          "description": "Schéma générique — champs libres sans contrainte",
+          "description": "Schéma générique — champs libres, fallback quand le type est inconnu",
           "output_schema": {
-            "document_type": {
-              "type": "string",
-              "required": true
-            },
-            "confidence": {
-              "type": "float",
-              "min": 0.0,
-              "max": 1.0,
-              "required": true
-            },
-            "fields": {
-              "type": "object",
-              "additionalProperties": true
-            },
-            "line_items": {
-              "type": "array"
-            },
-            "tables": {
-              "type": "array"
-            },
-            "raw_text_snippet": {
-              "type": "string",
-              "max_length": 200
-            }
+            "document_type": { "type": "string", "required": true },
+            "confidence":    { "type": "float", "min": 0.0, "max": 1.0, "required": true },
+            "fields":        { "type": "object", "additionalProperties": true },
+            "line_items":    { "type": "array" },
+            "tables":        { "type": "array" },
+            "raw_text_snippet": { "type": "string", "max_length": 200 }
           },
           "required_fields": [],
           "eval_fields": []
