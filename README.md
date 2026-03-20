@@ -1,6 +1,21 @@
-# POC — Document Intelligence with Qwen 3 VL
+# POC — Document Intelligence with Qwen2.5-VL
 
-Transform raw document images into structured, exploitable data using **Qwen 3 VL** (vision + language) running fully locally via `llama.cpp`.
+Transform raw document images into structured, exploitable data using **Qwen2.5-VL** (vision + language) running fully locally via `llama.cpp`.
+
+Primary use case: **CAC 40 chart analysis** — extract OHLC values, trend signals, and indicators from candlestick screenshots. The same pipeline handles invoices, forms, and any structured document.
+
+---
+
+## Overview
+
+| Component | Technology |
+|-----------|-----------|
+| Vision-Language Model | Qwen2.5-VL-7B (Q4_K_M GGUF) |
+| Inference server | llama.cpp (OpenAI-compatible API) |
+| UI | Streamlit multi-page app |
+| Fine-tuning | LoRA r=4 via IPEX-LLM on Intel Arc XPU |
+| Dataset | 100 CAC 40 chart images + JSON labels |
+| Export | JSON / CSV + PowerPoint report |
 
 ---
 
@@ -8,30 +23,56 @@ Transform raw document images into structured, exploitable data using **Qwen 3 V
 
 ```
 poc_qwen/
-├── data/
-│   ├── raw/          # Input: PDF pages / scans / photos
-│   ├── processed/    # Resized/normalized images ready for inference
-│   └── outputs/      # Extracted JSON / CSV results
-├── docs/             # Reference docs, prompt templates
-├── logs/             # Inference logs, MLflow artifacts
-├── models/           # GGUF model weights (downloaded separately)
-├── notebooks/        # Exploration / fine-tuning experiments
-├── scripts/
-│   ├── start_server.sh        # Start llama.cpp server (Linux/macOS)
-│   ├── start_server.ps1       # Start llama.cpp server (Windows)
-│   ├── download_model.py      # Download Qwen3-VL GGUF from HF
-│   └── convert_pdf.py         # PDF → image preprocessing
+├── app.py                         # Streamlit entry point (server health + navigation)
+├── pages/
+│   ├── 01_Guide.py                # Setup guide and llama.cpp install instructions
+│   ├── 02_Pipeline.py             # Document upload → classify → extract → export
+│   └── 03_FineTuning.py           # 6-step LoRA fine-tuning workflow (Intel Arc XPU)
 ├── src/
 │   ├── pipeline/
-│   │   ├── classify.py        # Document classification
-│   │   ├── extract.py         # Field / table extraction
-│   │   └── infer.py           # Low-level VLM call
+│   │   ├── infer.py               # Low-level VLM call (OpenAI-compatible client)
+│   │   ├── classify.py            # Document type classification
+│   │   ├── extract.py             # Structured field / table extraction
+│   │   └── prompt_registry.py     # Load prompts from prompts/registry.json
 │   └── utils/
-│       ├── image_utils.py     # Image loading, resizing, encoding
-│       └── schema.py          # Pydantic output schemas
-├── .env.example
+│       ├── image_utils.py         # Image loading, resizing, base64 encoding
+│       ├── schema.py              # Pydantic output schemas
+│       ├── monitoring.py          # MLflow / latency tracking
+│       └── vector_store.py        # Embedding store (ChromaDB)
+├── scripts/
+│   ├── download_model.py          # Download Qwen2.5-VL GGUF from Hugging Face
+│   ├── start_server.ps1           # Start llama.cpp server (Windows PowerShell)
+│   ├── start_server.sh            # Start llama.cpp server (Linux/macOS)
+│   ├── capture_chart_dataset.py   # Auto-capture CAC 40 screenshots for dataset
+│   ├── finetune_xpu.py            # Fine-tuning script (Intel Arc XPU via IPEX-LLM)
+│   ├── convert_pdf.py             # PDF → image preprocessing
+│   ├── setup.ps1 / setup.sh       # Environment bootstrap
+│   └── start_mlflow.ps1           # Start MLflow tracking server
+├── finetuning/
+│   ├── dataset/
+│   │   ├── images/                # 100 CAC 40 chart images (chart_cac40_YYYY-MM-DD.jpg)
+│   │   └── labels.json            # OHLC + indicator ground truth for each image
+│   └── ft_*/                      # Fine-tuned adapter checkpoints (git-ignored)
+├── models/                        # GGUF weights — downloaded separately (git-ignored)
+├── data/
+│   ├── raw/                       # Input: PDF pages / scans / chart screenshots
+│   ├── processed/                 # Normalized images ready for inference
+│   ├── outputs/                   # Extracted JSON / CSV results
+│   └── vectorstore/               # ChromaDB embeddings
+├── prompts/
+│   └── registry.json              # Prompt templates for each document type
+├── reports/
+│   └── generate_ppt.py            # Auto-generate PowerPoint report from results
+├── notebooks/
+│   └── finetune_qwen_vl.ipynb     # LoRA fine-tuning walkthrough
+├── add_oneapi_path.ps1            # Add Intel oneAPI to PATH (required for XPU)
+├── start_with_xpu.bat             # Launch llama.cpp with Intel Arc GPU offload
+├── test_xpu.py                    # Verify XPU availability
+├── example_inference.py           # Minimal inference example (no UI)
+├── run_pipeline.py                # CLI entry point
+├── MODELS.md                      # Model download guide
 ├── requirements.txt
-└── run_pipeline.py            # CLI entry point
+└── .env.example
 ```
 
 ---
@@ -39,13 +80,14 @@ poc_qwen/
 ## Hardware requirements
 
 | Config | Minimum | Recommended |
-|---|---|---|
+|--------|---------|-------------|
 | RAM | 16 GB | 32 GB |
-| VRAM (GPU) | 8 GB (Q4_K_M) | 16 GB (Q5_K_M/Q8) |
+| VRAM (GPU) | 8 GB Q4_K_M | 16 GB Q5_K_M/Q8 |
 | CPU fallback | Slow but works | — |
 | Disk | 10 GB free | 20 GB |
 
-> Qwen3-VL 7B at Q4_K_M ≈ 5.2 GB VRAM. Qwen3-VL 72B requires 40+ GB.
+> **Qwen2.5-VL 7B at Q4_K_M ≈ 4.4 GB VRAM.** Tested on Intel Arc A770 (16 GB) via IPEX-LLM.
+> See `add_oneapi_path.ps1` and `start_with_xpu.bat` for Arc setup.
 
 ---
 
@@ -56,61 +98,84 @@ poc_qwen/
 ```bash
 cd poc_qwen
 python -m venv .venv
+
 # Windows
 .venv\Scripts\activate
-# Linux/macOS
+# Linux / macOS
 source .venv/bin/activate
 
 pip install -r requirements.txt
 ```
 
-### 2. Download Qwen3-VL GGUF model
+### 2. Download the model
 
 ```bash
 python scripts/download_model.py
 ```
 
-Or manually from Hugging Face:
-- [Qwen/Qwen2.5-VL-7B-Instruct-GGUF](https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct-GGUF)
-- Place `.gguf` file in `models/`
+Downloads `Qwen2.5-VL-7B-Instruct-Q4_K_M.gguf` and `mmproj-F16.gguf` into `models/`.
+See [MODELS.md](MODELS.md) for other sizes (72B, Q5_K_M, Q8_0) and manual download instructions.
 
-### 3. Install llama.cpp
-
-```bash
-# Option A: pip (CPU)
-pip install llama-cpp-python
-
-# Option B: pip (CUDA GPU)
-CMAKE_ARGS="-DGGML_CUDA=on" pip install llama-cpp-python --force-reinstall --no-cache-dir
-
-# Option C: prebuilt server binary
-# https://github.com/ggerganov/llama.cpp/releases
-```
-
-### 4. Configure environment
+### 3. Configure environment
 
 ```bash
 cp .env.example .env
-# Edit .env with your model path
+# Edit .env — set MODEL_SERVER_URL, MODEL_NAME, TEMPERATURE, MAX_TOKENS
 ```
 
-### 5. Start the model server
+### 4. Start the llama.cpp server
 
 ```bash
 # Windows PowerShell
 scripts/start_server.ps1
 
-# Linux/macOS
+# Intel Arc XPU (Windows)
+start_with_xpu.bat
+
+# Linux / macOS
 bash scripts/start_server.sh
 ```
 
-Server runs at `http://localhost:8080`.
+Server runs at `http://localhost:8080` (OpenAI-compatible `/v1` API).
 
-### 6. Run the pipeline
+### 5. Launch the Streamlit UI
+
+```bash
+streamlit run app.py --server.port 8505
+```
+
+Navigate to `http://localhost:8505`.
+
+---
+
+## Streamlit UI — pages
+
+| Page | Description |
+|------|-------------|
+| **Home** (`app.py`) | Server health check, auto-start llama.cpp, navigation |
+| **Pipeline** (`02_Pipeline.py`) | Upload image/PDF → classify → extract → JSON/CSV export |
+| **Fine-tuning** (`03_FineTuning.py`) | 6-step guided LoRA workflow on Intel Arc XPU |
+| **Guide** (`01_Guide.py`) | Setup instructions, llama.cpp install, XPU config |
+
+### Pipeline page — 5-step flow
+
+```
+Upload → Classification → Extraction → Validation → Export
+```
+
+- Drag-drop any image or PDF
+- Model detects document type (chart, invoice, form, …)
+- Extracts structured fields as JSON
+- Export to CSV or download JSON
+- History of previous extractions in session
+
+---
+
+## CLI usage
 
 ```bash
 # Classify + extract a single document
-python run_pipeline.py --input data/raw/my_document.pdf
+python run_pipeline.py --input data/raw/chart_cac40_2025-03-12.jpg
 
 # Extract only
 python run_pipeline.py --input data/raw/invoice.jpg --mode extract
@@ -121,51 +186,104 @@ python run_pipeline.py --input data/raw/contract.png --mode classify
 
 ---
 
-## Output example
+## Output example — CAC 40 chart
 
 ```json
 {
-  "document_type": "invoice",
-  "confidence": 0.94,
+  "document_type": "financial_chart",
+  "confidence": 0.96,
   "fields": {
-    "invoice_number": "INV-2024-00142",
-    "date": "2024-11-15",
-    "vendor": "Acme Corp",
-    "total_amount": "4 250,00 EUR",
-    "vat": "708,33 EUR"
+    "index": "CAC 40",
+    "date": "2025-03-12",
+    "open": 8012.5,
+    "high": 8087.3,
+    "low":  7968.1,
+    "close": 8054.7,
+    "trend": "bullish",
+    "rsi_14": 58.2,
+    "macd_signal": "buy"
   },
-  "line_items": [
-    {"description": "Consulting services", "qty": 5, "unit_price": "750.00", "total": "3750.00"},
-    {"description": "Travel expenses", "qty": 1, "unit_price": "500.00", "total": "500.00"}
-  ],
-  "raw_text_snippet": "FACTURE N° INV-2024-00142...",
   "extraction_metadata": {
     "model": "qwen2.5-vl-7b-q4_k_m",
-    "latency_ms": 3420,
-    "timestamp": "2025-01-15T10:32:45"
+    "latency_ms": 3240,
+    "timestamp": "2025-03-12T17:05:12"
   }
 }
 ```
 
 ---
 
-## Optional: Fine-tuning Qwen3-VL
+## Fine-tuning on Intel Arc XPU
 
-See `notebooks/finetune_qwen_vl.ipynb` for a LoRA fine-tuning walkthrough using:
-- `transformers` + `peft` + `trl`
-- Your labeled documents in `data/processed/`
+The `03_FineTuning.py` page guides you through a 6-step LoRA fine-tuning workflow:
 
-Minimum for fine-tuning: 24 GB VRAM (A10G / RTX 3090+).
+1. **Dataset** — review the 100 CAC 40 chart images + `finetuning/dataset/labels.json`
+2. **Base model** — download Qwen2.5-VL-3B (lighter base for fine-tuning)
+3. **Training config** — LoRA r=4, batch size, learning rate, epochs
+4. **Training** — launch `scripts/finetune_xpu.py` via IPEX-LLM on Intel Arc
+5. **Evaluation** — compare predictions vs ground-truth labels
+6. **Export** — merge adapter, convert to GGUF for llama.cpp serving
+
+**Estimated time:** 30–45 min on Intel Core Ultra 5 125H (Arc integrated GPU).
+
+```bash
+# Direct fine-tuning script
+python scripts/finetune_xpu.py --epochs 3 --lora-r 4
+```
+
+---
+
+## Dataset — CAC 40 charts
+
+```
+finetuning/dataset/
+├── images/                        # 100 daily candlestick screenshots
+│   ├── chart_cac40_2025-03-12.jpg
+│   ├── chart_cac40_2025-03-14.jpg
+│   └── …
+└── labels.json                    # OHLC + indicators ground truth
+```
+
+Images are captured automatically with `scripts/capture_chart_dataset.py` (screenshots of Euronext / TradingView charts).
+
+---
+
+## Intel Arc XPU setup
+
+```powershell
+# 1. Add Intel oneAPI to PATH
+.\add_oneapi_path.ps1
+
+# 2. Verify Arc GPU is detected
+python test_xpu.py
+
+# 3. Start llama.cpp with XPU offload
+.\start_with_xpu.bat
+```
+
+Requires [Intel oneAPI Base Toolkit](https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit.html) installed.
 
 ---
 
 ## Troubleshooting
 
 | Error | Fix |
-|---|---|
-| `Connection refused :8080` | Server not started — run `start_server` script |
-| `CUDA out of memory` | Reduce `--n-gpu-layers`, use smaller quant (Q4_K_S) |
-| `Image too large` | Resize to max 1024px — `src/utils/image_utils.py` handles this |
-| `JSON parse error` | Model returned malformed JSON — retry or adjust `--temp 0.1` |
-| Slow on CPU | Normal — expect 5-30s/image on CPU; use GPU offload |
+|-------|-----|
+| `Connection refused :8080` | Run `start_server.ps1` or `start_with_xpu.bat` first |
+| `CUDA out of memory` | Reduce `--n-gpu-layers`, use Q4_K_S instead of Q4_K_M |
+| `Image too large` | `src/utils/image_utils.py` auto-resizes to 1024px max |
+| `JSON parse error` | Model returned malformed JSON — retry or lower `--temp 0.1` |
+| Slow on CPU | Expected (5–30 s/image) — use GPU or XPU offload |
 | `DLL load failed` (Windows) | Install Visual C++ Redistributable 2019+ |
+| `oneAPI not found` | Run `add_oneapi_path.ps1` then restart terminal |
+| XPU not detected | Check Intel Graphics driver ≥ 31.0.101.5186 |
+
+---
+
+## Model download
+
+See [MODELS.md](MODELS.md) for full instructions including:
+- Automatic download via `scripts/download_model.py`
+- Manual `huggingface-cli` commands
+- Quantization comparison table (Q4_K_M / Q5_K_M / Q8_0)
+- Hugging Face token setup for gated repos
