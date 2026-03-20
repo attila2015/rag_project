@@ -1,0 +1,51 @@
+# Modèles GGUF (trop lourds pour GitHub)
+models/*.gguf
+models/*.bin
+models/*.safetensors
+models/*.pt
+
+# Modèle base fine-tuning (téléchargeable depuis HuggingFace)
+finetuning/base/
+
+# Checkpoints et adapters fine-tuning (artefacts locaux)
+finetuning/ft_*/
+finetuning/*.pid
+finetuning/*.json
+
+# Dataset images — sauf chart_cac40
+finetuning/dataset/images/*
+!finetuning/dataset/images/chart_cac40_*.jpg
+
+# Données locales
+data/raw/*
+data/processed/*
+data/outputs/*
+data/vectorstore/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/outputs/.gitkeep
+!data/vectorstore/.gitkeep
+
+# bin/ (poppler — installe via requirements)
+bin/
+
+# Logs / artefacts
+logs/
+mlruns/
+*.log
+served_models/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Env / secrets
+.env
+!.env.example
+
+# IDE
+.vscode/
+.idea/

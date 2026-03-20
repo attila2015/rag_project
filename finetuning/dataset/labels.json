@@ -1,0 +1,1502 @@
+[
+  {
+    "image": "images/chart_cac40_2025-03-12.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-03-12",
+      "timeframe": "1D",
+      "open": "8006.04",
+      "high": "8072.45",
+      "low": "7938.85",
+      "close": "7988.96",
+      "volume": "89409700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-03-14.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-03-14",
+      "timeframe": "1D",
+      "open": "7924.22",
+      "high": "8044.44",
+      "low": "7916.58",
+      "close": "8028.28",
+      "volume": "80007200",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-03-18.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-03-18",
+      "timeframe": "1D",
+      "open": "8100.89",
+      "high": "8140.09",
+      "low": "8090.63",
+      "close": "8114.57",
+      "volume": "78614400",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-03-20.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-03-20",
+      "timeframe": "1D",
+      "open": "8164.09",
+      "high": "8167.48",
+      "low": "8062.14",
+      "close": "8094.2",
+      "volume": "71330200",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-03-24.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-03-24",
+      "timeframe": "1D",
+      "open": "8104.71",
+      "high": "8114.45",
+      "low": "8002.34",
+      "close": "8022.33",
+      "volume": "61431800",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-03-26.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-03-26",
+      "timeframe": "1D",
+      "open": "8121.99",
+      "high": "8127.91",
+      "low": "8025.21",
+      "close": "8030.68",
+      "volume": "68178000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-03-28.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-03-28",
+      "timeframe": "1D",
+      "open": "7949.23",
+      "high": "7975.55",
+      "low": "7894.62",
+      "close": "7916.08",
+      "volume": "74145700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-04-01.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-04-01",
+      "timeframe": "1D",
+      "open": "7837.45",
+      "high": "7884.35",
+      "low": "7814.73",
+      "close": "7876.36",
+      "volume": "73679000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-04-03.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-04-03",
+      "timeframe": "1D",
+      "open": "7689.61",
+      "high": "7740.91",
+      "low": "7585.0",
+      "close": "7598.98",
+      "volume": "115848900",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-04-07.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-04-07",
+      "timeframe": "1D",
+      "open": "6804.84",
+      "high": "7285.73",
+      "low": "6763.76",
+      "close": "6927.12",
+      "volume": "197563800",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-04-09.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-04-09",
+      "timeframe": "1D",
+      "open": "6902.42",
+      "high": "6999.35",
+      "low": "6792.57",
+      "close": "6863.02",
+      "volume": "122317100",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-04-11.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-04-11",
+      "timeframe": "1D",
+      "open": "7191.48",
+      "high": "7204.6",
+      "low": "7007.63",
+      "close": "7104.8",
+      "volume": "89406900",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-04-15.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-04-15",
+      "timeframe": "1D",
+      "open": "7255.06",
+      "high": "7344.2",
+      "low": "7239.73",
+      "close": "7335.4",
+      "volume": "76652500",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-04-17.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-04-17",
+      "timeframe": "1D",
+      "open": "7311.91",
+      "high": "7331.64",
+      "low": "7257.77",
+      "close": "7285.86",
+      "volume": "60437800",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-04-23.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-04-23",
+      "timeframe": "1D",
+      "open": "7403.93",
+      "high": "7555.17",
+      "low": "7403.93",
+      "close": "7482.36",
+      "volume": "94945000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-04-25.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-04-25",
+      "timeframe": "1D",
+      "open": "7565.35",
+      "high": "7574.25",
+      "low": "7525.13",
+      "close": "7536.26",
+      "volume": "71766900",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-04-29.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-04-29",
+      "timeframe": "1D",
+      "open": "7572.23",
+      "high": "7588.43",
+      "low": "7533.57",
+      "close": "7555.87",
+      "volume": "69142800",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-05-02.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-05-02",
+      "timeframe": "1D",
+      "open": "7710.08",
+      "high": "7779.7",
+      "low": "7679.01",
+      "close": "7770.48",
+      "volume": "80868800",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-05-06.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-05-06",
+      "timeframe": "1D",
+      "open": "7743.07",
+      "high": "7746.28",
+      "low": "7647.78",
+      "close": "7696.92",
+      "volume": "60335900",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-05-08.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-05-08",
+      "timeframe": "1D",
+      "open": "7657.03",
+      "high": "7719.83",
+      "low": "7646.01",
+      "close": "7694.44",
+      "volume": "62217600",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-05-12.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-05-12",
+      "timeframe": "1D",
+      "open": "7800.18",
+      "high": "7880.29",
+      "low": "7783.69",
+      "close": "7850.1",
+      "volume": "86218100",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-05-14.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-05-14",
+      "timeframe": "1D",
+      "open": "7875.39",
+      "high": "7877.74",
+      "low": "7805.7",
+      "close": "7836.79",
+      "volume": "66229500",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-05-16.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-05-16",
+      "timeframe": "1D",
+      "open": "7874.93",
+      "high": "7915.43",
+      "low": "7855.72",
+      "close": "7886.69",
+      "volume": "67204200",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-05-20.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-05-20",
+      "timeframe": "1D",
+      "open": "7899.86",
+      "high": "7955.53",
+      "low": "7878.57",
+      "close": "7942.42",
+      "volume": "65943600",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-05-22.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-05-22",
+      "timeframe": "1D",
+      "open": "7870.57",
+      "high": "7887.1",
+      "low": "7807.05",
+      "close": "7864.44",
+      "volume": "61205200",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-05-26.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-05-26",
+      "timeframe": "1D",
+      "open": "7833.13",
+      "high": "7840.3",
+      "low": "7799.81",
+      "close": "7828.13",
+      "volume": "45804600",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-05-28.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-05-28",
+      "timeframe": "1D",
+      "open": "7825.42",
+      "high": "7853.66",
+      "low": "7787.58",
+      "close": "7788.1",
+      "volume": "59924500",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-05-30.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-05-30",
+      "timeframe": "1D",
+      "open": "7776.04",
+      "high": "7811.49",
+      "low": "7747.9",
+      "close": "7751.89",
+      "volume": "126162300",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-06-03.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-06-03",
+      "timeframe": "1D",
+      "open": "7752.28",
+      "high": "7765.46",
+      "low": "7699.24",
+      "close": "7763.84",
+      "volume": "58270900",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-06-05.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-06-05",
+      "timeframe": "1D",
+      "open": "7811.18",
+      "high": "7848.09",
+      "low": "7761.54",
+      "close": "7790.27",
+      "volume": "53717400",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-06-09.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-06-09",
+      "timeframe": "1D",
+      "open": "7796.26",
+      "high": "7812.73",
+      "low": "7772.09",
+      "close": "7791.47",
+      "volume": "39647500",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-06-11.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-06-11",
+      "timeframe": "1D",
+      "open": "7810.84",
+      "high": "7840.02",
+      "low": "7775.9",
+      "close": "7775.9",
+      "volume": "58253000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-06-13.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-06-13",
+      "timeframe": "1D",
+      "open": "7670.04",
+      "high": "7713.68",
+      "low": "7659.13",
+      "close": "7684.68",
+      "volume": "74634100",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-06-17.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-06-17",
+      "timeframe": "1D",
+      "open": "7687.17",
+      "high": "7702.75",
+      "low": "7646.76",
+      "close": "7683.73",
+      "volume": "63015300",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-06-19.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-06-19",
+      "timeframe": "1D",
+      "open": "7605.88",
+      "high": "7618.76",
+      "low": "7553.45",
+      "close": "7553.45",
+      "volume": "54333600",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-06-23.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-06-23",
+      "timeframe": "1D",
+      "open": "7549.92",
+      "high": "7597.94",
+      "low": "7505.27",
+      "close": "7537.57",
+      "volume": "53135000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-06-25.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-06-25",
+      "timeframe": "1D",
+      "open": "7630.34",
+      "high": "7658.5",
+      "low": "7557.24",
+      "close": "7558.16",
+      "volume": "53189500",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-06-27.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-06-27",
+      "timeframe": "1D",
+      "open": "7613.35",
+      "high": "7691.55",
+      "low": "7609.96",
+      "close": "7691.55",
+      "volume": "60467400",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-01.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-01",
+      "timeframe": "1D",
+      "open": "7674.54",
+      "high": "7675.69",
+      "low": "7612.39",
+      "close": "7662.59",
+      "volume": "56189700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-03.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-03",
+      "timeframe": "1D",
+      "open": "7763.25",
+      "high": "7766.92",
+      "low": "7717.07",
+      "close": "7754.55",
+      "volume": "51421200",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-07.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-07",
+      "timeframe": "1D",
+      "open": "7704.21",
+      "high": "7730.98",
+      "low": "7682.12",
+      "close": "7723.47",
+      "volume": "49271000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-09.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-09",
+      "timeframe": "1D",
+      "open": "7799.33",
+      "high": "7886.79",
+      "low": "7790.55",
+      "close": "7878.46",
+      "volume": "59300100",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-11.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-11",
+      "timeframe": "1D",
+      "open": "7873.43",
+      "high": "7881.19",
+      "low": "7815.19",
+      "close": "7829.29",
+      "volume": "48937000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-15.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-15",
+      "timeframe": "1D",
+      "open": "7818.09",
+      "high": "7836.13",
+      "low": "7766.21",
+      "close": "7766.21",
+      "volume": "48694900",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-17.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-17",
+      "timeframe": "1D",
+      "open": "7794.42",
+      "high": "7822.02",
+      "low": "7783.65",
+      "close": "7822.0",
+      "volume": "52115700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-21.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-21",
+      "timeframe": "1D",
+      "open": "7825.73",
+      "high": "7838.61",
+      "low": "7757.68",
+      "close": "7798.22",
+      "volume": "47487000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-23.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-23",
+      "timeframe": "1D",
+      "open": "7839.71",
+      "high": "7869.96",
+      "low": "7816.27",
+      "close": "7850.43",
+      "volume": "66792400",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-25.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-25",
+      "timeframe": "1D",
+      "open": "7782.39",
+      "high": "7851.46",
+      "low": "7759.59",
+      "close": "7834.58",
+      "volume": "59054700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-29.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-29",
+      "timeframe": "1D",
+      "open": "7834.84",
+      "high": "7924.62",
+      "low": "7833.02",
+      "close": "7857.36",
+      "volume": "57353300",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-07-31.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-07-31",
+      "timeframe": "1D",
+      "open": "7876.59",
+      "high": "7906.37",
+      "low": "7771.97",
+      "close": "7771.97",
+      "volume": "84917700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-08-04.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-08-04",
+      "timeframe": "1D",
+      "open": "7582.77",
+      "high": "7632.77",
+      "low": "7571.76",
+      "close": "7632.01",
+      "volume": "57746900",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-08-06.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-08-06",
+      "timeframe": "1D",
+      "open": "7658.92",
+      "high": "7672.15",
+      "low": "7620.97",
+      "close": "7635.03",
+      "volume": "46905700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-08-08.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-08-08",
+      "timeframe": "1D",
+      "open": "7733.71",
+      "high": "7770.89",
+      "low": "7710.67",
+      "close": "7743.0",
+      "volume": "50735400",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-08-12.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-08-12",
+      "timeframe": "1D",
+      "open": "7730.22",
+      "high": "7759.74",
+      "low": "7702.51",
+      "close": "7753.42",
+      "volume": "45578600",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-08-14.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-08-14",
+      "timeframe": "1D",
+      "open": "7822.95",
+      "high": "7871.39",
+      "low": "7818.57",
+      "close": "7870.34",
+      "volume": "45938800",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-08-18.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-08-18",
+      "timeframe": "1D",
+      "open": "7929.42",
+      "high": "7929.42",
+      "low": "7856.9",
+      "close": "7884.05",
+      "volume": "39333100",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-08-20.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-08-20",
+      "timeframe": "1D",
+      "open": "7949.14",
+      "high": "8004.34",
+      "low": "7932.06",
+      "close": "7973.03",
+      "volume": "42249900",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-08-22.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-08-22",
+      "timeframe": "1D",
+      "open": "7923.39",
+      "high": "7997.35",
+      "low": "7923.39",
+      "close": "7969.69",
+      "volume": "40033500",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-08-26.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-08-26",
+      "timeframe": "1D",
+      "open": "7726.24",
+      "high": "7749.24",
+      "low": "7668.08",
+      "close": "7709.81",
+      "volume": "131793500",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-08-28.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-08-28",
+      "timeframe": "1D",
+      "open": "7770.69",
+      "high": "7833.04",
+      "low": "7734.96",
+      "close": "7762.6",
+      "volume": "51176800",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-09-01.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-09-01",
+      "timeframe": "1D",
+      "open": "7724.96",
+      "high": "7744.64",
+      "low": "7697.82",
+      "close": "7707.9",
+      "volume": "33581700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-09-03.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-09-03",
+      "timeframe": "1D",
+      "open": "7699.62",
+      "high": "7736.76",
+      "low": "7671.53",
+      "close": "7719.71",
+      "volume": "58857500",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-09-05.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-09-05",
+      "timeframe": "1D",
+      "open": "7723.97",
+      "high": "7732.04",
+      "low": "7649.4",
+      "close": "7674.78",
+      "volume": "55619600",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-09-09.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-09-09",
+      "timeframe": "1D",
+      "open": "7750.92",
+      "high": "7791.65",
+      "low": "7729.88",
+      "close": "7749.39",
+      "volume": "49086400",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-09-11.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-09-11",
+      "timeframe": "1D",
+      "open": "7781.8",
+      "high": "7848.38",
+      "low": "7773.57",
+      "close": "7823.52",
+      "volume": "54251700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-09-15.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-09-15",
+      "timeframe": "1D",
+      "open": "7848.2",
+      "high": "7935.31",
+      "low": "7843.46",
+      "close": "7896.93",
+      "volume": "49857700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-09-17.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-09-17",
+      "timeframe": "1D",
+      "open": "7841.55",
+      "high": "7846.09",
+      "low": "7777.96",
+      "close": "7786.98",
+      "volume": "53227000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-09-19.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-09-19",
+      "timeframe": "1D",
+      "open": "7873.37",
+      "high": "7934.92",
+      "low": "7853.59",
+      "close": "7853.59",
+      "volume": "138907700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-09-23.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-09-23",
+      "timeframe": "1D",
+      "open": "7867.69",
+      "high": "7919.07",
+      "low": "7857.11",
+      "close": "7872.02",
+      "volume": "48991400",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-09-25.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-09-25",
+      "timeframe": "1D",
+      "open": "7797.97",
+      "high": "7819.7",
+      "low": "7760.07",
+      "close": "7795.42",
+      "volume": "51878400",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-09-29.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-09-29",
+      "timeframe": "1D",
+      "open": "7899.02",
+      "high": "7901.23",
+      "low": "7870.47",
+      "close": "7880.87",
+      "volume": "46221000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-01.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-01",
+      "timeframe": "1D",
+      "open": "7894.29",
+      "high": "7984.82",
+      "low": "7865.4",
+      "close": "7966.95",
+      "volume": "63080400",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-03.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-03",
+      "timeframe": "1D",
+      "open": "8093.01",
+      "high": "8097.24",
+      "low": "8040.36",
+      "close": "8081.54",
+      "volume": "52963700",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-07.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-07",
+      "timeframe": "1D",
+      "open": "7974.91",
+      "high": "8005.74",
+      "low": "7934.13",
+      "close": "7974.85",
+      "volume": "55312500",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-09.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-09",
+      "timeframe": "1D",
+      "open": "8074.12",
+      "high": "8109.77",
+      "low": "8041.36",
+      "close": "8041.36",
+      "volume": "50470000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-13.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-13",
+      "timeframe": "1D",
+      "open": "7959.27",
+      "high": "7995.49",
+      "low": "7902.12",
+      "close": "7934.26",
+      "volume": "47157200",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-15.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-15",
+      "timeframe": "1D",
+      "open": "8029.97",
+      "high": "8130.72",
+      "low": "8024.54",
+      "close": "8077.0",
+      "volume": "72826600",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-17.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-17",
+      "timeframe": "1D",
+      "open": "8092.53",
+      "high": "8224.56",
+      "low": "8080.83",
+      "close": "8174.2",
+      "volume": "67602100",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-21.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-21",
+      "timeframe": "1D",
+      "open": "8206.35",
+      "high": "8271.48",
+      "low": "8198.27",
+      "close": "8258.86",
+      "volume": "58317200",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-23.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-23",
+      "timeframe": "1D",
+      "open": "8225.45",
+      "high": "8257.47",
+      "low": "8215.53",
+      "close": "8225.78",
+      "volume": "66578600",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-27.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-27",
+      "timeframe": "1D",
+      "open": "8237.2",
+      "high": "8252.64",
+      "low": "8202.72",
+      "close": "8239.18",
+      "volume": "46330600",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-29.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-29",
+      "timeframe": "1D",
+      "open": "8198.71",
+      "high": "8226.32",
+      "low": "8186.01",
+      "close": "8200.88",
+      "volume": "51921600",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-10-31.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-10-31",
+      "timeframe": "1D",
+      "open": "8150.22",
+      "high": "8161.81",
+      "low": "8106.95",
+      "close": "8121.07",
+      "volume": "60682000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-11-04.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-11-04",
+      "timeframe": "1D",
+      "open": "8014.47",
+      "high": "8067.58",
+      "low": "7963.69",
+      "close": "8067.53",
+      "volume": "54448200",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-11-06.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-11-06",
+      "timeframe": "1D",
+      "open": "8016.67",
+      "high": "8044.86",
+      "low": "7950.8",
+      "close": "7964.77",
+      "volume": "62779100",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-11-10.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-11-10",
+      "timeframe": "1D",
+      "open": "8044.09",
+      "high": "8077.18",
+      "low": "8017.47",
+      "close": "8055.51",
+      "volume": "52949300",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-11-12.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-11-12",
+      "timeframe": "1D",
+      "open": "8190.68",
+      "high": "8280.97",
+      "low": "8185.03",
+      "close": "8241.24",
+      "volume": "61916100",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-11-14.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-11-14",
+      "timeframe": "1D",
+      "open": "8186.14",
+      "high": "8202.48",
+      "low": "8084.23",
+      "close": "8170.09",
+      "volume": "54654300",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-11-18.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-11-18",
+      "timeframe": "1D",
+      "open": "8017.73",
+      "high": "8032.51",
+      "low": "7925.06",
+      "close": "7967.93",
+      "volume": "68564200",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-11-20.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-11-20",
+      "timeframe": "1D",
+      "open": "8044.85",
+      "high": "8057.7",
+      "low": "7981.07",
+      "close": "7981.07",
+      "volume": "60357000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-11-24.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-11-24",
+      "timeframe": "1D",
+      "open": "8030.46",
+      "high": "8033.38",
+      "low": "7958.61",
+      "close": "7959.67",
+      "volume": "112183000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-11-26.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-11-26",
+      "timeframe": "1D",
+      "open": "8075.47",
+      "high": "8098.67",
+      "low": "8027.61",
+      "close": "8096.43",
+      "volume": "53500500",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-11-28.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-11-28",
+      "timeframe": "1D",
+      "open": "8105.01",
+      "high": "8132.17",
+      "low": "8084.23",
+      "close": "8122.71",
+      "volume": "42475900",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-12-02.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-12-02",
+      "timeframe": "1D",
+      "open": "8084.77",
+      "high": "8135.8",
+      "low": "8072.06",
+      "close": "8074.61",
+      "volume": "49999600",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-12-04.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-12-04",
+      "timeframe": "1D",
+      "open": "8115.17",
+      "high": "8137.65",
+      "low": "8098.09",
+      "close": "8122.03",
+      "volume": "60726200",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-12-08.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-12-08",
+      "timeframe": "1D",
+      "open": "8098.96",
+      "high": "8110.76",
+      "low": "8080.85",
+      "close": "8108.43",
+      "volume": "45305200",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-12-10.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-12-10",
+      "timeframe": "1D",
+      "open": "8035.09",
+      "high": "8045.22",
+      "low": "8005.11",
+      "close": "8022.69",
+      "volume": "50663900",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-12-12.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-12-12",
+      "timeframe": "1D",
+      "open": "8100.53",
+      "high": "8155.39",
+      "low": "8068.62",
+      "close": "8068.62",
+      "volume": "56113400",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-12-16.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-12-16",
+      "timeframe": "1D",
+      "open": "8114.39",
+      "high": "8150.22",
+      "low": "8086.7",
+      "close": "8106.16",
+      "volume": "61766000",
+      "chart_type": "candlestick"
+    }
+  },
+  {
+    "image": "images/chart_cac40_2025-12-18.jpg",
+    "doc_type": "chart",
+    "expected": {
+      "symbol": "TVC:CAC40",
+      "chart_date": "2025-12-18",
+      "timeframe": "1D",
+      "open": "8087.43",
+      "high": "8166.72",
+      "low": "8086.59",
+      "close": "8150.64",
+      "volume": "62013200",
+      "chart_type": "candlestick"
+    }
+  }
+]
