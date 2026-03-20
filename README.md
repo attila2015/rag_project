@@ -174,14 +174,14 @@ Upload → Classification → Extraction → Validation → Export
 ## CLI usage
 
 ```bash
-# Classify + extract a single document
+# Extract OHLC data from a CAC 40 chart screenshot
 python run_pipeline.py --input data/raw/chart_cac40_2025-03-12.jpg
 
-# Extract only
-python run_pipeline.py --input data/raw/invoice.jpg --mode extract
+# Extract only (skip classification step)
+python run_pipeline.py --input data/raw/chart_cac40_2025-03-14.jpg --mode extract
 
-# Classify only
-python run_pipeline.py --input data/raw/contract.png --mode classify
+# Batch: process all charts in a folder
+python run_pipeline.py --input data/raw/ --mode extract
 ```
 
 ---
